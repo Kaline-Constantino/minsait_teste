@@ -7,25 +7,10 @@ provider "azurerm" {
   tenant_id       = var.azure_tenant_id
 }
 
-variable "azure_subscription_id" {
-  type        = string
-  description = "The subscription ID for Azure"
-}
-
-variable "azure_client_id" {
-  type        = string
-  description = "The client ID for Azure"
-}
-
-variable "azure_client_secret" {
-  type        = string
-  description = "The client secret for Azure"
-}
-
-variable "azure_tenant_id" {
-  type        = string
-  description = "The tenant ID for Azure"
-}
+variable "azure_subscription_id" {}
+variable "azure_client_id" {}
+variable "azure_client_secret" {}
+variable "azure_tenant_id" {}
 
 resource "azurerm_resource_group" "rg" {
   name     = "minsait_teste_rg"
