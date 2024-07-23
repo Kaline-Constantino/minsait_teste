@@ -7,6 +7,26 @@ provider "azurerm" {
   tenant_id       = var.azure_tenant_id
 }
 
+variable "azure_subscription_id" {
+  type        = string
+  description = "The subscription ID for Azure"
+}
+
+variable "azure_client_id" {
+  type        = string
+  description = "The client ID for Azure"
+}
+
+variable "azure_client_secret" {
+  type        = string
+  description = "The client secret for Azure"
+}
+
+variable "azure_tenant_id" {
+  type        = string
+  description = "The tenant ID for Azure"
+}
+
 resource "azurerm_resource_group" "rg" {
   name     = "minsait_teste_rg"
   location = "East US"
@@ -64,7 +84,7 @@ resource "azurerm_virtual_machine" "vm" {
   }
 
   storage_os_disk {
-    name              = "myosdisk_new"
+    name              = "myosdisk"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
