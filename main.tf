@@ -7,11 +7,6 @@ provider "azurerm" {
   tenant_id       = var.azure_tenant_id
 }
 
-variable "azure_subscription_id" {}
-variable "azure_client_id" {}
-variable "azure_client_secret" {}
-variable "azure_tenant_id" {}
-
 resource "azurerm_resource_group" "rg" {
   name     = "minsait_teste_rg"
   location = "East US"
