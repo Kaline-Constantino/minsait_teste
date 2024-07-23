@@ -64,7 +64,7 @@ resource "azurerm_virtual_machine" "vm" {
   }
 
   storage_os_disk {
-    name              = "myosdisk"
+    name              = "myosdisk_new"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
@@ -129,4 +129,8 @@ SETTINGS
 
 output "public_ip_address" {
   value = azurerm_public_ip.public_ip.ip_address
+}
+
+output "debug_public_ip" {
+  value = azurerm_public_ip.public_ip
 }
