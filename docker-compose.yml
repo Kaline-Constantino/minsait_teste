@@ -2,31 +2,42 @@ version: '3'
 
 services:
   db:
+    # Utiliza a imagem oficial do MySQL versão 5.7
     image: mysql:5.7
+    # Define o volume para persistência de dados do banco de dados
     volumes:
       - db_data:/var/lib/mysql
+    # Reinicia o container automaticamente em caso de falhas
     restart: always
+    # Define as variáveis de ambiente necessárias para o MySQL
     environment:
-      MYSQL_ROOT_PASSWORD: GAud4mZby8F3SD6P
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: GAud4mZby8F3SD6P  # Senha do usuário root
+      MYSQL_DATABASE: wordpress               # Nome do banco de dados
+      MYSQL_USER: wordpress                   # Nome do usuário do banco de dados
+      MYSQL_PASSWORD: wordpress               # Senha do usuário do banco de dados
 
   wordpress:
+    # Define a dependência do serviço 'db', garantindo que ele seja iniciado primeiro
     depends_on:
       - db
+    # Utiliza a imagem oficial mais recente do WordPress
     image: wordpress:latest
+    # Define o volume para persistência de dados do WordPress
     volumes:
       - wordpress_data:/var/www/html
+    # Mapeia a porta 80 do container para a porta 80 do host
     ports:
       - "80:80"
+    # Reinicia o container automaticamente em caso de falhas
     restart: always
+    # Define as variáveis de ambiente necessárias para o WordPress
     environment:
-      WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: wordpress
-      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_HOST: db:3306              # Endereço do host do banco de dados
+      WORDPRESS_DB_USER: wordpress            # Nome do usuário do banco de dados
+      WORDPRESS_DB_PASSWORD: wordpress        # Senha do usuário do banco de dados
+      WORDPRESS_DB_NAME: wordpress            # Nome do banco de dados
 
+# Define os volumes utilizados para persistência de dados
 volumes:
   db_data:
   wordpress_data:
