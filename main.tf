@@ -104,7 +104,7 @@ resource "azurerm_network_security_group" "nsg" {
     source_port_range          = "*"
     destination_port_range     = "80"
     source_address_prefix      = "*"
-    destination address_prefix = "*"
+    destination_address_prefix = "*"
   }
 }
 
@@ -129,8 +129,4 @@ SETTINGS
 
 output "public_ip_address" {
   value = azurerm_public_ip.public_ip.ip_address
-}
-
-output "debug_public_ip" {
-  value = azurerm_public_ip.public_ip
 }
