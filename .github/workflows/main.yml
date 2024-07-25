@@ -28,10 +28,18 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
+      - name: Terraform Plan
+        env:
+          TF_VAR_azure_subscription_id: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+          TF_VAR_azure_client_id: ${{ secrets.ARM_CLIENT_ID }}
+          TF_VAR_azure_client_secret: ${{ secrets.ARM_CLIENT_SECRET }}
+          TF_VAR_azure_tenant_id: ${{ secrets.ARM_TENANT_ID }}
+        run: terraform plan -out=tfplan
+
       - name: Terraform Apply
         env:
           TF_VAR_azure_subscription_id: ${{ secrets.ARM_SUBSCRIPTION_ID }}
           TF_VAR_azure_client_id: ${{ secrets.ARM_CLIENT_ID }}
           TF_VAR_azure_client_secret: ${{ secrets.ARM_CLIENT_SECRET }}
           TF_VAR_azure_tenant_id: ${{ secrets.ARM_TENANT_ID }}
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve tfplan
