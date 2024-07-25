@@ -20,8 +20,8 @@ services:
     # Define a dependência do serviço 'db', garantindo que ele seja iniciado primeiro
     depends_on:
       - db
-    # Utiliza a imagem oficial mais recente do WordPress
-    image: wordpress:latest
+    # Constrói a partir do Dockerfile na raiz do projeto
+    build: .
     # Define o volume para persistência de dados do WordPress
     volumes:
       - wordpress_data:/var/www/html
