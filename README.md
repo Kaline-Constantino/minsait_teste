@@ -97,7 +97,7 @@ Caso o Endereço de ip publico não apareça assim que dubir a VM pode ser feito
 terraform init
 terraform apply -auto-approve
 ```
-.
+
 2. Entrar na conta da azure, Selecionar a VM que subiu junto aos comandos e copiar o endereço publico.
 
 Nem sempre acontece do output não exibir o endereço de ip publico, mas pode ocorrer na primeira vez que sob a maquina.
